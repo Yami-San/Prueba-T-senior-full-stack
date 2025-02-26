@@ -1,14 +1,67 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model User {
+  id            BigInt        @id @default(autoincrement()) 
+  name          String?       @db.VarChar
+  email         String?       @unique @db.VarChar
+  emailVerified DateTime?
+  phone_number  String?       @db.VarChar
+  role          String        @default("USER") @db.VarChar      
+
+  accounts     Account[]
+  sessions     Session[]
+  transactions Transactions[]
+}
+
+model Account {
+  id                 BigInt  @id @default(autoincrement())
+  userId             BigInt  
+  type               String
+  provider           String
+  providerAccountId  String  @unique
+  refresh_token      String? @db.Text
+  access_token       String? @db.Text
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String? @db.Text
+  session_state      String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String  @id @default(uuid())
+  userId       BigInt  
+  sessionToken String  @unique
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String @id @db.VarChar
+  token      String @unique @db.VarChar
+  expires    DateTime
+}
+
+model Transactions {
+  id          BigInt   @id @default(autoincrement())
+  userId      BigInt  
+  amount      Float    @db.Real
+  description String   @db.VarChar
+  date        DateTime @default(now()) @db.Timestamp(6)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }

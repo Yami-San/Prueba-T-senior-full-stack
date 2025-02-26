@@ -1,7 +1,9 @@
 import { ApolloServer } from '@apollo/server';
 import { startServerAndCreateNextHandler } from '@as-integrations/next';
 import { makeExecutableSchema } from '@graphql-tools/schema';
+import { startStandaloneServer } from '@apollo/server/standalone';
 import { gql } from 'graphql-tag';
+import { supabase } from "@/lib/supabase";
 
 const typeDefs = gql`
   type Query {
@@ -9,8 +11,17 @@ const typeDefs = gql`
   }
 
   type User {
-    name: String
-    username: String
+    id: ID!
+    name: String!
+    mail: String!
+    phone_number: String!
+    rol: String!
+  }
+
+  type Transaction {
+    id: ID!
+    userID: ID!
+    
   }
 `;
 
