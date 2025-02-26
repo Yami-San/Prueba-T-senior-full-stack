@@ -32,6 +32,9 @@ export default NextAuth({
       return session
     },
   },
+  pages: {
+    signOut: "http://localhost:3000",
+  },
   secret: process.env.NEXTAUTH_SECRET,
 })
 

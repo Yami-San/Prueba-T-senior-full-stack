@@ -8,15 +8,20 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
+enum Role {
+  USER
+  ADMIN
+}
+
 /// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
 /// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
 model User {
-  id            BigInt        @id @default(autoincrement()) 
+  id            String        @id @default(uuid())
   name          String?       @db.VarChar
   email         String?       @unique @db.VarChar
   emailVerified DateTime?
   phone_number  String?       @db.VarChar
-  role          String        @default("USER") @db.VarChar      
+  role          Role          @default(USER)
 
   accounts     Account[]
   sessions     Session[]
@@ -24,17 +29,17 @@ model User {
 }
 
 model Account {
-  id                 BigInt  @id @default(autoincrement())
-  userId             BigInt  
+  id                 String   @id @default(uuid())
+  userId             String
   type               String
   provider           String
-  providerAccountId  String  @unique
-  refresh_token      String? @db.Text
-  access_token       String? @db.Text
+  providerAccountId  String   @unique
+  refresh_token      String?  @db.Text
+  access_token       String?  @db.Text
   expires_at         Int?
   token_type         String?
   scope              String?
-  id_token           String? @db.Text
+  id_token           String?  @db.Text
   session_state      String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -42,9 +47,9 @@ model Account {
 }
 
 model Session {
-  id           String  @id @default(uuid())
-  userId       BigInt  
-  sessionToken String  @unique
+  id           String   @id @default(uuid())
+  userId       String
+  sessionToken String   @unique
   expires      DateTime
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -57,8 +62,8 @@ model VerificationToken {
 }
 
 model Transactions {
-  id          BigInt   @id @default(autoincrement())
-  userId      BigInt  
+  id          String   @id @default(uuid())
+  userId      String
   amount      Float    @db.Real
   description String   @db.VarChar
   date        DateTime @default(now()) @db.Timestamp(6)
