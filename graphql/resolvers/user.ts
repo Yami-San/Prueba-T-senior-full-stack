@@ -7,9 +7,9 @@ export const userResolvers = {
     users: async () => {
       return await prisma.user.findMany({
         select: { id: true, name: true, email: true, phone_number: true, role: true },
-      });
+      }) ?? [];
     },
-    user: async (_: any, { id }: { id: string }) => {
+    user: async (_: unknown, { id }: { id: string }) => {
       return await prisma.user.findUnique({
         where: { id },
         select: { id: true, name: true, email: true, phone_number: true, role: true },
@@ -17,7 +17,7 @@ export const userResolvers = {
     },
   },
   Mutation: {
-    updateUser: async (_: any, { id, name, role }: { id: string; name?: string; role?: Role }) => {
+    updateUser: async (_: unknown, { id, name, role }: { id: string; name?: string; role?: Role }) => {
       return await prisma.user.update({
         where: { id },
         data: {
