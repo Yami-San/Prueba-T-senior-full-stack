@@ -7,7 +7,7 @@ export const transactionResolvers = {
   Query: {
     transactions: async () => {
       return await prisma.transactions.findMany({
-        select: { id: true, amount: true, description: true, date: true },
+        select: { id: true, amount: true, description: true, date: true, user: { select: { id: true, name: true, email: true, phone_number: true } } },
       }) ?? [];
     },
     transaction: async (_: unknown, { id }: { id: string }) => {
