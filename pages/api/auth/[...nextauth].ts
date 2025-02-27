@@ -1,11 +1,13 @@
-import NextAuth from "next-auth"
+// pages/api/auth/[...nextauth].ts
+import NextAuth, { AuthOptions } from "next-auth"
 import Auth0Provider from "next-auth/providers/auth0"
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import { PrismaClient } from "@prisma/client"
 
 const prisma = new PrismaClient()
 
-export default NextAuth({
+// 1. Define y exporta tu objeto de opciones
+export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
     Auth0Provider({
@@ -27,6 +29,7 @@ export default NextAuth({
   callbacks: {
     async session({ session, user }) {
       if (session.user) {
+        session.user.id = user.id
         session.user.role = user.role
       }
       return session
@@ -36,5 +39,7 @@ export default NextAuth({
     signOut: "http://localhost:3000",
   },
   secret: process.env.NEXTAUTH_SECRET,
-})
+}
 
+// 2. Export default NextAuth usando ese objeto
+export default NextAuth(authOptions)
