@@ -11,6 +11,9 @@ const customJestConfig = {
   // Usa el entorno jsdom para simular un navegador
   testEnvironment: 'jest-environment-jsdom',
   // Puedes agregar otras configuraciones personalizadas aquí si lo requieres
+  moduleNameMapper: {
+    '^@/(.*)$': '<rootDir>/$1', // Mapea @ a la raíz del proyecto
+  },
 };
 
 module.exports = createJestConfig(customJestConfig);

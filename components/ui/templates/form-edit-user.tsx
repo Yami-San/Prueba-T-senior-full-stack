@@ -7,7 +7,7 @@ export default function EditUserForm({ userId }: { userId: string }) {
   return (
     <Layout>
       <div className='max-w-3xl mx-auto p-6 bg-gray-100 rounded-lg shadow-md'>
-        <h1 className='text-xl font-bold text-center mb-4'>
+        <h1 data-testid="only-admin" className='text-xl font-bold text-center mb-4'>
           Sistema de gestión de Ingresos y Gastos
         </h1>
         <EditUser userId={userId as string}></EditUser>

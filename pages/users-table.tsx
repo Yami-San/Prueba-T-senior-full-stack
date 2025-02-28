@@ -1,9 +1,9 @@
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import IncomeExpenseTable from '@/components/ui/templates/users-table';
+import UsersTableComponent from '@/components/ui/templates/users-table';
 
-export default function IncomeExpenseTablePage() {
+export default function UsersTablePage() {
   const { data: session, status } = useSession();
     const router = useRouter();
     useEffect(() => {
@@ -16,6 +16,6 @@ export default function IncomeExpenseTablePage() {
       return <p>Cargando...</p>;
     }
     return (
-      <IncomeExpenseTable></IncomeExpenseTable>
+      <UsersTableComponent></UsersTableComponent>
     );
   }
