@@ -2,9 +2,7 @@
 import NextAuth, { AuthOptions } from "next-auth"
 import Auth0Provider from "next-auth/providers/auth0"
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
-import { PrismaClient } from "@prisma/client"
-
-const prisma = new PrismaClient()
+import { prisma } from "@/lib/prisma"
 
 // 1. Define y exporta tu objeto de opciones
 export const authOptions: AuthOptions = {

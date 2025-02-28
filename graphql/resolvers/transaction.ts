@@ -1,7 +1,5 @@
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "@/lib/prisma";
 import { MyContext } from "@/graphql/context";
-
-const prisma = new PrismaClient();
 
 export const transactionResolvers = {
   Query: {
