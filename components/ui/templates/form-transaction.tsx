@@ -8,6 +8,7 @@ export default function NewUserTransaction() {
         <h1
           data-testid='only-admin'
           className='absolute h-96 text-xl font-bold text-center mb-4'
+          style={{ pointerEvents: 'none' }}
         >
           Sistema de gestión de Ingresos y Gastos
         </h1>
