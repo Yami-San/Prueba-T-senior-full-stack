@@ -1,10 +1,9 @@
-import { Layout } from '@/components/Layout';
 import { useRouter } from 'next/router';
-import { EditUser } from '@/components/ui/form-edit-user';
 import { useSession } from 'next-auth/react';
 import { useEffect } from 'react';
+import EditUserForm from '@/components/ui/templates/form-edit-user';
 
-export default function TransactionsChartUI() {
+export default function EditUserFormPage() {
   const { data: session, status } = useSession();
     const router = useRouter();
     useEffect(() => {
@@ -20,13 +19,8 @@ export default function TransactionsChartUI() {
 
   if (!id) return <p>Cargando...</p>;
   return (
-    <Layout>
-      <div className='max-w-3xl mx-auto p-6 bg-gray-100 rounded-lg shadow-md'>
-        <h1 className='text-xl font-bold text-center mb-4'>
-          Sistema de gestión de Ingresos y Gastos
-        </h1>
-        <EditUser userId={id as string}></EditUser>
-      </div>
-    </Layout>
+    <EditUserForm
+    userId={id as string}
+    ></EditUserForm>
   );
 }
