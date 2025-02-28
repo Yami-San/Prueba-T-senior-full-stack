@@ -8,7 +8,7 @@ import type {
 export const authOptions: NextAuthOptions = {
   providers: [
     Auth0Provider({
-      clientId: process.env.AUTH0_CLIENT_ID!,
+      clientId: process.env.NEXT_PUBLIC_AUTH0_CLIENT_ID!,
       clientSecret: process.env.AUTH0_CLIENT_SECRET!,
       issuer: process.env.AUTH0_ISSUER,
     }),
