@@ -44,7 +44,7 @@ export const authOptions: AuthOptions = {
     },
   },
   pages: {
-    signOut: "http://localhost:3000",
+    signOut: "https://prueba-t-senior-full-stack.vercel.app",
   },
   secret: process.env.NEXTAUTH_SECRET,
 }
