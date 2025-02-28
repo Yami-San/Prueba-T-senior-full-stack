@@ -1,8 +1,3 @@
-// pages/api/auth/[...nextauth].ts
-console.log("AUTH0_CLIENT_ID:", process.env.AUTH0_CLIENT_ID);
-console.log("AUTH0_CLIENT_SECRET:", process.env.AUTH0_CLIENT_SECRET);
-console.log("AUTH0_ISSUER:", process.env.AUTH0_ISSUER);
-
 import NextAuth, { AuthOptions } from "next-auth"
 import Auth0Provider from "next-auth/providers/auth0"
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
@@ -13,7 +8,7 @@ export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
     Auth0Provider({
-      clientId: process.env.AUTH0_CLIENT_ID!,
+      clientId: process.env.NEXT_PUBLIC_AUTH0_CLIENT_ID!,
       clientSecret: process.env.AUTH0_CLIENT_SECRET!,
       issuer: process.env.AUTH0_ISSUER!,
       profile(profile) {
