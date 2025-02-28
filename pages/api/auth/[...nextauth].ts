@@ -19,6 +19,7 @@ export const authOptions: AuthOptions = {
           id: profile.sub,
           name: profile.name,
           email: profile.email,
+          role: profile.role,
         }
       },
     }),
@@ -32,7 +33,14 @@ export const authOptions: AuthOptions = {
         session.user.id = user.id
         session.user.role = user.role
       }
-      return session
+      return {
+        ...session,
+        user: {
+          ...session.user,
+          id: user.id,
+          role: user.role, // Asegurar que role se incluye
+        },
+      };
     },
   },
   pages: {

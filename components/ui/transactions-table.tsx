@@ -10,7 +10,7 @@ import {
   ColumnFiltersState,
   filterFns,
 } from "@tanstack/react-table";
-
+import { Input } from "./input";
 import {
   Table,
   TableHeader,
@@ -147,7 +147,7 @@ export function TransactionsTable() {
       <CardContent>
         {/* FILTRO POR NOMBRE DE USUARIO */}
         <div className="mb-4">
-          <input
+          <Input
             type="text"
             className="border px-2 py-1"
             placeholder="Escribe un nombre..."
