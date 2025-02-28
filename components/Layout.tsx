@@ -54,7 +54,7 @@ export function Layout({ children }: LayoutProps) {
                   window.location.href = `https://${
                     process.env.NEXT_PUBLIC_AUTH0_DOMAIN
                   }/v2/logout?client_id=${
-                    process.env.AUTH0_CLIENT_ID
+                    process.env.NEXT_PUBLIC_AUTH0_CLIENT_ID
                   }&returnTo=${encodeURIComponent('https://prueba-t-senior-full-stack.vercel.app')}`;
                 }}
                 className='bg-gray-500 text-white px-4 py-2 rounded mt-2 hover:scale-110'
