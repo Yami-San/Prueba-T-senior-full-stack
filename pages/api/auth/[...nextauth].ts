@@ -1,4 +1,8 @@
 // pages/api/auth/[...nextauth].ts
+console.log("AUTH0_CLIENT_ID:", process.env.AUTH0_CLIENT_ID);
+console.log("AUTH0_CLIENT_SECRET:", process.env.AUTH0_CLIENT_SECRET);
+console.log("AUTH0_ISSUER:", process.env.AUTH0_ISSUER);
+
 import NextAuth, { AuthOptions } from "next-auth"
 import Auth0Provider from "next-auth/providers/auth0"
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
