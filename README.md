@@ -9,17 +9,17 @@ Node.js 22.x.x
 1. Clonar el repositorio 
 2. usar bun install para descargar los paquetes.
 3. Preparar las variables de entorno:
-# DATABASE_URL= ?pgbouncer=true -->usar pgbouncer para evitar problemas cuando se recarga de nuevo
-# DIRECT_URL=
-# NEXT_PUBLIC_SUPABASE_URL=
-# NEXT_PUBLIC_SUPABASE_ANON_KEY=
-# AUTH_SECRET=
-# AUTH_TRUST_HOST= solo en desarrollo true
-# NEXT_PUBLIC_AUTH0_CLIENT_ID=
-# AUTH0_CLIENT_SECRET=
-# AUTH0_ISSUER=
-# NEXTAUTH_URL=
-# NEXT_PUBLIC_AUTH0_DOMAIN=
+```DATABASE_URL= ?pgbouncer=true -->usar pgbouncer para evitar problemas cuando se recarga de nuevo
+DIRECT_URL=
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+AUTH_SECRET=
+AUTH_TRUST_HOST= solo en desarrollo true
+NEXT_PUBLIC_AUTH0_CLIENT_ID=
+AUTH0_CLIENT_SECRET=
+AUTH0_ISSUER=
+NEXTAUTH_URL=
+NEXT_PUBLIC_AUTH0_DOMAIN=```
 El database que se usara es Supabase con prisma.
 Para el auth usar auth0
 4. Migrar la base de datos o actualizarla usa: bun x prisma migrate dev
