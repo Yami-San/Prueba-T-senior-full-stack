@@ -19,7 +19,8 @@ NEXT_PUBLIC_AUTH0_CLIENT_ID=
 AUTH0_CLIENT_SECRET=
 AUTH0_ISSUER=
 NEXTAUTH_URL=
-NEXT_PUBLIC_AUTH0_DOMAIN=```
+NEXT_PUBLIC_AUTH0_DOMAIN=
+```
 El database que se usara es Supabase con prisma.
 Para el auth usar auth0
 4. Migrar la base de datos o actualizarla usa: bun x prisma migrate dev
