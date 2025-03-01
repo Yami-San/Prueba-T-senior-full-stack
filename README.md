@@ -23,8 +23,8 @@ NEXT_PUBLIC_AUTH0_DOMAIN=
 ```
 El database que se usara es Supabase con prisma.
 Para el auth usar auth0
-4. Migrar la base de datos o actualizarla usa: bun x prisma migrate dev
-5. Cambiar todas las variables donde tengan https://prueba-t-senior-full-stack.vercel.app por http://localhost:3000 (puedes burcar rapido con ctl + shift + f)
-6. Ejecutar bun run dev o bun dev
-7. Ir a tu navegador con el link: http://localhost:3000
-8. Iniciar sesión y cambiar el rol del usuario desde Supabase a admin para poder usar toda la app, puede crear más usuarios para ver como actua la app.
+ 4. Migrar la base de datos o actualizarla usa: bun x prisma migrate dev
+ 5. Cambiar todas las variables donde tengan https://prueba-t-senior-full-stack.vercel.app por http://localhost:3000 (puedes burcar rapido con ctl + shift + f)
+ 6. Ejecutar bun run dev o bun dev
+ 7. Ir a tu navegador con el link: http://localhost:3000
+ 8. Iniciar sesión y cambiar el rol del usuario desde Supabase a admin para poder usar toda la app, puede crear más usuarios para ver como actua la app.
